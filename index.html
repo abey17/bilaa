@@ -1,0 +1,851 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shopee - Belanja Online</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f5f5f5;
+    color: #333;
+}
+
+.header {
+    background: #ee4d2d;
+    color: white;
+    padding: 15px 5%;
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.logo {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.search {
+    flex: 1;
+    display: flex;
+    background: white;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.search input {
+    flex: 1;
+    padding: 13px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+}
+
+.search button {
+    width: 60px;
+    border: none;
+    background: #fb5533;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.cart {
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 15px;
+}
+
+.nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.banner {
+    background: linear-gradient(135deg, #ff7a45, #ee4d2d);
+    min-height: 250px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px;
+    color: white;
+}
+
+.banner-text h1 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.banner-text p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.banner button {
+    background: white;
+    color: #ee4d2d;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.banner-icon {
+    font-size: 130px;
+}
+
+.section {
+    background: white;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #444;
+}
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 15px;
+}
+
+.category {
+    text-align: center;
+    padding: 15px 5px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    transition: .3s;
+}
+
+.category:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px #ddd;
+}
+
+.category-icon {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+.category p {
+    font-size: 13px;
+}
+
+.flash {
+    border-top: 4px solid #ee4d2d;
+}
+
+.flash-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.flash-title {
+    color: #ee4d2d;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.timer {
+    background: #333;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+}
+
+.product {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #eee;
+    transition: .3s;
+}
+
+.product:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px #ccc;
+}
+
+.product-image {
+    height: 170px;
+    background: #fafafa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 70px;
+}
+
+.product-info {
+    padding: 12px;
+}
+
+.product-name {
+    font-size: 14px;
+    min-height: 40px;
+}
+
+.price {
+    color: #ee4d2d;
+    font-size: 19px;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.old-price {
+    color: #999;
+    text-decoration: line-through;
+    font-size: 12px;
+}
+
+.rating {
+    color: #ffb400;
+    margin-top: 5px;
+}
+
+.sold {
+    color: #777;
+    font-size: 12px;
+}
+
+.buy {
+    width: 100%;
+    margin-top: 10px;
+    padding: 9px;
+    border: none;
+    background: #ee4d2d;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.promo {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.promo-card {
+    padding: 25px;
+    border-radius: 8px;
+    color: white;
+    min-height: 150px;
+}
+
+.promo-card h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.promo-card p {
+    margin-bottom: 15px;
+}
+
+.promo-card button {
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.promo-one {
+    background: linear-gradient(135deg, #ff512f, #dd2476);
+}
+
+.promo-two {
+    background: linear-gradient(135deg, #2193b0, #6dd5ed);
+}
+
+.promo-three {
+    background: linear-gradient(135deg, #f7971e, #ffd200);
+}
+
+.store {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+}
+
+.store-info {
+    background: #fff5f2;
+    padding: 25px;
+    border-radius: 8px;
+}
+
+.store-logo {
+    width: 80px;
+    height: 80px;
+    background: #ee4d2d;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.store-info h3 {
+    margin-bottom: 10px;
+}
+
+.follow {
+    background: #ee4d2d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.store-products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.mini-product {
+    border: 1px solid #eee;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.mini-image {
+    height: 100px;
+    background: #f7f7f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 45px;
+}
+
+.footer {
+    margin-top: 40px;
+    background: #333;
+    color: white;
+    padding: 40px 5%;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.footer h3 {
+    margin-bottom: 15px;
+}
+
+.footer p {
+    color: #ccc;
+    line-height: 1.8;
+    font-size: 14px;
+}
+
+.copyright {
+    text-align: center;
+    border-top: 1px solid #555;
+    margin-top: 30px;
+    padding-top: 20px;
+    color: #aaa;
+}
+
+@media(max-width:900px) {
+    .categories {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .products {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .store {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width:600px) {
+    .top {
+        flex-wrap: wrap;
+    }
+
+    .logo {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav {
+        flex-wrap: wrap;
+    }
+
+    .banner {
+        padding: 25px;
+    }
+
+    .banner-text h1 {
+        font-size: 28px;
+    }
+
+    .banner-icon {
+        font-size: 70px;
+    }
+
+    .categories {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .promo {
+        grid-template-columns: 1fr;
+    }
+
+    .store-products {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <div class="top">
+        <div class="logo">Shopee</div>
+
+        <div class="search">
+            <input type="text" id="searchInput" placeholder="Cari di Shopee...">
+            <button onclick="searchProduct()">🔍</button>
+        </div>
+
+        <div class="cart" onclick="showCart()">🛒</div>
+    </div>
+
+    <nav class="nav">
+        <a href="#">Produk Terlaris</a>
+        <a href="#">Elektronik</a>
+        <a href="#">Fashion</a>
+        <a href="#">Kecantikan</a>
+        <a href="#">Rumah Tangga</a>
+        <a href="#">Voucher</a>
+    </nav>
+</header>
+
+<main class="container">
+
+    <section class="banner">
+        <div class="banner-text">
+            <h1>Belanja Hemat di Shopee</h1>
+            <p>Temukan jutaan produk dengan harga menarik.</p>
+            <button onclick="shopNow()">Belanja Sekarang</button>
+        </div>
+        <div class="banner-icon">🛍️</div>
+    </section>
+
+    <section class="section">
+        <div class="section-title">Kategori Pilihan</div>
+
+        <div class="categories">
+
+            <div class="category">
+                <div class="category-icon">👕</div>
+                <p>Fashion Pria</p>
+            </div>
+
+            <div class="category">
+                <div class="category-icon">👗</div>
+                <p>Fashion Wanita</p>
+            </div>
+
+            <div class="category">
+                <div class="category-icon">📱</div>
+                <p>Elektronik</p>
+            </div>
+
+            <div class="category">
+                <div class="category-icon">💄</div>
+                <p>Kecantikan</p>
+            </div>
+
+            <div class="category">
+                <div class="category-icon">🏠</div>
+                <p>Rumah</p>
+            </div>
+
+            <div class="category">
+                <div class="category-icon">🎮</div>
+                <p>Gaming</p>
+            </div>
+
+            <div class="category">
+                <div class="category-icon">👟</div>
+                <p>Sepatu</p>
+            </div>
+
+            <div class="category">
+                <div class="category-icon">🍳</div>
+                <p>Dapur</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section flash">
+        <div class="flash-head">
+            <div class="flash-title">⚡ FLASH SALE</div>
+            <div class="timer" id="timer">02 : 00 : 00</div>
+        </div>
+
+        <div class="products">
+
+            <div class="product">
+                <div class="product-image">📱</div>
+                <div class="product-info">
+                    <div class="product-name">Smartphone Android 128GB</div>
+                    <div class="price">Rp1.499.000</div>
+                    <div class="old-price">Rp1.999.000</div>
+                    <div class="rating">★★★★★</div>
+                    <div class="sold">1,2RB terjual</div>
+                    <button class="buy" onclick="buyProduct('Smartphone Android')">Beli</button>
+                </div>
+            </div>
+
+            <div class="product">
+                <div class="product-image">🎧</div>
+                <div class="product-info">
+                    <div class="product-name">Headset Bluetooth Wireless</div>
+                    <div class="price">Rp89.000</div>
+                    <div class="old-price">Rp150.000</div>
+                    <div class="rating">★★★★★</div>
+                    <div class="sold">5,4RB terjual</div>
+                    <button class="buy" onclick="buyProduct('Headset Bluetooth')">Beli</button>
+                </div>
+            </div>
+
+            <div class="product">
+                <div class="product-image">⌚</div>
+                <div class="product-info">
+                    <div class="product-name">Smartwatch Sport Series</div>
+                    <div class="price">Rp199.000</div>
+                    <div class="old-price">Rp350.000</div>
+                    <div class="rating">★★★★☆</div>
+                    <div class="sold">2,8RB terjual</div>
+                    <button class="buy" onclick="buyProduct('Smartwatch')">Beli</button>
+                </div>
+            </div>
+
+            <div class="product">
+                <div class="product-image">👟</div>
+                <div class="product-info">
+                    <div class="product-name">Sepatu Sneakers Pria</div>
+                    <div class="price">Rp159.000</div>
+                    <div class="old-price">Rp300.000</div>
+                    <div class="rating">★★★★★</div>
+                    <div class="sold">4,1RB terjual</div>
+                    <button class="buy" onclick="buyProduct('Sepatu Sneakers')">Beli</button>
+                </div>
+            </div>
+
+            <div class="product">
+                <div class="product-image">🎒</div>
+                <div class="product-info">
+                    <div class="product-name">Tas Ransel Casual</div>
+                    <div class="price">Rp99.000</div>
+                    <div class="old-price">Rp180.000</div>
+                    <div class="rating">★★★★★</div>
+                    <div class="sold">3,6RB terjual</div>
+                    <button class="buy" onclick="buyProduct('Tas Ransel')">Beli</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-title">🎁 Promo Spesial</div>
+
+        <div class="promo">
+
+            <div class="promo-card promo-one">
+                <h3>Gratis Ongkir</h3>
+                <p>Belanja lebih hemat dengan voucher gratis ongkir.</p>
+                <button onclick="claimVoucher()">Klaim Voucher</button>
+            </div>
+
+            <div class="promo-card promo-two">
+                <h3>Diskon 50%</h3>
+                <p>Dapatkan diskon menarik untuk berbagai produk.</p>
+                <button onclick="showPromo()">Lihat Promo</button>
+            </div>
+
+            <div class="promo-card promo-three">
+                <h3>Cashback</h3>
+                <p>Dapatkan cashback untuk transaksi tertentu.</p>
+                <button onclick="showPromo()">Ambil Sekarang</button>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-title">⭐ Produk Pilihan</div>
+
+        <div class="products">
+
+            <div class="product">
+                <div class="product-image">💻</div>
+                <div class="product-info">
+                    <div class="product-name">Laptop Slim 14 Inch</div>
+                    <div class="price">Rp5.499.000</div>
+                    <div class="rating">★★★★★</div>
+                    <div class="sold">950 terjual</div>
+                    <button class="buy" onclick="buyProduct('Laptop Slim')">Beli</button>
+                </div>
+            </div>
+
+            <div class="product">
+                <div class="product-image">📷</div>
+                <div class="product-info">
+                    <div class="product-name">Kamera Digital HD</div>
+                    <div class="price">Rp2.499.000</div>
+                    <div class="rating">★★★★★</div>
+                    <div class="sold">760 terjual</div>
+                    <button class="buy" onclick="buyProduct('Kamera Digital')">Beli</button>
+                </div>
+            </div>
+
+            <div class="product">
+                <div class="product-image">🪑</div>
+                <div class="product-info">
+                    <div class="product-name">Kursi Kantor Ergonomis</div>
+                    <div class="price">Rp699.000</div>
+                    <div class="rating">★★★★☆</div>
+                    <div class="sold">530 terjual</div>
+                    <button class="buy" onclick="buyProduct('Kursi Kantor')">Beli</button>
+                </div>
+            </div>
+
+            <div class="product">
+                <div class="product-image">🍳</div>
+                <div class="product-info">
+                    <div class="product-name">Wajan Anti Lengket</div>
+                    <div class="price">Rp79.000</div>
+                    <div class="rating">★★★★★</div>
+                    <div class="sold">6,2RB terjual</div>
+                    <button class="buy" onclick="buyProduct('Wajan')">Beli</button>
+                </div>
+            </div>
+
+            <div class="product">
+                <div class="product-image">🧴</div>
+                <div class="product-info">
+                    <div class="product-name">Botol Minum Stainless</div>
+                    <div class="price">Rp59.000</div>
+                    <div class="rating">★★★★★</div>
+                    <div class="sold">8,1RB terjual</div>
+                    <button class="buy" onclick="buyProduct('Botol Minum')">Beli</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="section-title">🏪 Toko Pilihan</div>
+
+        <div class="store">
+
+            <div class="store-info">
+                <div class="store-logo">S</div>
+                <h3>Shopee Official Store</h3>
+                <p>Produk pilihan dengan kualitas terbaik.</p>
+                <p>⭐ 4.9 | 98% respon chat</p>
+                <button class="follow" onclick="followStore()">+ Ikuti Toko</button>
+            </div>
+
+            <div class="store-products">
+
+                <div class="mini-product">
+                    <div class="mini-image">📱</div>
+                    <p>Handphone Terbaru</p>
+                    <b>Rp2.999.000</b>
+                </div>
+
+                <div class="mini-product">
+                    <div class="mini-image">⌚</div>
+                    <p>Smartwatch</p>
+                    <b>Rp299.000</b>
+                </div>
+
+                <div class="mini-product">
+                    <div class="mini-image">🎧</div>
+                    <p>Headphone</p>
+                    <b>Rp199.000</b>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer class="footer">
+
+    <div class="footer-grid">
+
+        <div>
+            <h3>Layanan Shopee</h3>
+            <p>Bantuan</p>
+            <p>Metode Pembayaran</p>
+            <p>Gratis Ongkir</p>
+            <p>Hubungi Kami</p>
+            <p>Pengembalian Barang</p>
+        </div>
+
+        <div>
+            <h3>Tentang Shopee</h3>
+            <p>Tentang Kami</p>
+            <p>Karir</p>
+            <p>Kebijakan Privasi</p>
+            <p>Ketentuan Layanan</p>
+            <p>Blog</p>
+        </div>
+
+        <div>
+            <h3>Ikuti Kami</h3>
+            <p>Facebook</p>
+            <p>Instagram</p>
+            <p>TikTok</p>
+            <p>YouTube</p>
+            <p>Twitter</p>
+        </div>
+
+        <div>
+            <h3>Download Aplikasi</h3>
+            <p>📱 Shopee App</p>
+            <p>Android</p>
+            <p>iOS</p>
+            <p>Belanja lebih mudah melalui aplikasi.</p>
+        </div>
+
+    </div>
+
+    <div class="copyright">
+        © 2026 Shopee Website Demo | Dibuat untuk pembelajaran HTML dan CSS
+    </div>
+
+</footer>
+
+<script>
+
+function searchProduct() {
+    const input = document.getElementById("searchInput").value;
+
+    if (input.trim() === "") {
+        alert("Silakan masukkan nama produk.");
+    } else {
+        alert("Mencari produk: " + input);
+    }
+}
+
+function showCart() {
+    alert("Keranjang belanja masih kosong.");
+}
+
+function shopNow() {
+    document.querySelector(".flash").scrollIntoView({
+        behavior: "smooth"
+    });
+}
+
+function buyProduct(product) {
+    alert(product + " berhasil ditambahkan ke keranjang!");
+}
+
+function claimVoucher() {
+    alert("Voucher gratis ongkir berhasil diklaim!");
+}
+
+function showPromo() {
+    alert("Promo sedang tersedia. Silakan pilih produk favorit Anda!");
+}
+
+function followStore() {
+    alert("Anda sekarang mengikuti Shopee Official Store!");
+}
+
+let seconds = 7200;
+
+setInterval(function() {
+
+    let hour = Math.floor(seconds / 3600);
+    let minute = Math.floor((seconds % 3600) / 60);
+    let second = seconds % 60;
+
+    hour = String(hour).padStart(2, "0");
+    minute = String(minute).padStart(2, "0");
+    second = String(second).padStart(2, "0");
+
+    document.getElementById("timer").innerText =
+        hour + " : " + minute + " : " + second;
+
+    if (seconds > 0) {
+        seconds--;
+    }
+
+}, 1000);
+
+</script>
+
+</body>
+</html>
+```
